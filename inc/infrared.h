@@ -65,7 +65,7 @@ rt_err_t ir_select_decoder(const char* name);
 rt_err_t decoder_read_data(struct ir_raw_data* data);
 rt_err_t decoder_write_data(struct ir_raw_data* data, rt_size_t size);
 
-rt_err_t user_read_api(const char* decoder_name,struct infrared_decoder_data* data);
-rt_err_t user_write_api(const char* decoder_name, struct infrared_decoder_data* data);
+rt_err_t infrared_read(const char* decoder_name,struct infrared_decoder_data* data);
+rt_err_t infrared_write(const char* decoder_name, struct infrared_decoder_data* data);
 
 #endif /* __INFRARED__ */

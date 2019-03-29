@@ -7,7 +7,8 @@ path    = [cwd + '/inc']
 src += ['src/infrared.c']
 src += ['src/drv_infrared.c']
 
-src += ['src/nec_decoder.c']
+if GetDepend(['INFRARED_NEC_DECODER']):
+    src += ['src/nec_decoder.c']
 
 group = DefineGroup('Infrared_frame', src, depend = ['PKG_USING_INFRARED'], CPPPATH = path)
 

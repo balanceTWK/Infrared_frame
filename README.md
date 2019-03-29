@@ -18,8 +18,8 @@ infrared
 ├───inc                             // 头文件
 ├───src                             // 源文件				
 ├───samples                         // 示例代码
-│   LICENSE                         // 软件包许可证
-│   README.md                       // 软件包使用说明
+│───LICENSE                         // 软件包许可证
+│───README.md                       // 软件包使用说明
 └───SConscript                      // RT-Thread 默认的构建脚本
 ```
 
@@ -35,6 +35,7 @@ infrared 软件包遵循 Apache-2.0 许可，详见 LICENSE 文件。
 RT-Thread online packages
     peripheral libraries and drivers  --->
          [*] infrared : infrared is base on rt-thread pin,hwtimer and pwm.  --->
+             Select infrared decoder  --->
              [ ] infrared send enable
              [ ] infrared receive enable
                  Version (latest)  --->

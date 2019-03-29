@@ -11,10 +11,9 @@
 #include <infrared.h>
 #include "ipc/ringbuffer.h"
 
-#define LOG_TAG     "infrared"
-//#define LOG_LVL     LOG_LVL_DBG
-#define LOG_LVL     LOG_LVL_INFO
-#include <ulog.h>
+#define DBG_SECTION_NAME     "infrared"
+#define DBG_LEVEL     DBG_INFO
+#include <rtdbg.h>
 
 static struct infrared_class infrared;
 
@@ -117,7 +116,7 @@ rt_err_t decoder_write_data(struct ir_raw_data* data, rt_size_t size)
     infrared.send(data, size);
     return RT_EOK;
 }
-rt_err_t user_read_api(const char* decoder_name, struct infrared_decoder_data* data)
+rt_err_t infrared_read(const char* decoder_name, struct infrared_decoder_data* data)
 {
     struct decoder_class *decoder;
 
@@ -137,7 +136,7 @@ rt_err_t user_read_api(const char* decoder_name, struct infrared_decoder_data* d
     return -RT_ERROR;
 }
 
-rt_err_t user_write_api(const char* decoder_name, struct infrared_decoder_data* data)
+rt_err_t infrared_write(const char* decoder_name, struct infrared_decoder_data* data)
 {
     struct decoder_class *decoder;
 

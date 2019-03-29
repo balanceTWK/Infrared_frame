@@ -11,10 +11,11 @@
 #include <infrared.h>
 #include "ipc/ringbuffer.h"
 
-#define LOG_TAG     "nec.decoder"
-//#define LOG_LVL     LOG_LVL_DBG
-#define LOG_LVL     LOG_LVL_INFO
-#include <ulog.h>
+#define DBG_SECTION_NAME     "nec.decoder"
+#define DBG_LEVEL     DBG_INFO
+#include <rtdbg.h>
+
+#ifdef INFRARED_NEC_DECODER
 
 #define NEC_BUFF_SIZE  32
 
@@ -264,3 +265,5 @@ int nec_decoder_register()
     return 0;
 }
 INIT_APP_EXPORT(nec_decoder_register);
+
+#endif /* INFRARED_NEC_DECODER */

@@ -14,10 +14,9 @@
 #include "infrared.h"
 #include "drv_infrared.h"
 
-#define LOG_TAG     "drv.infrared"
-//#define LOG_LVL     LOG_LVL_DBG
-#define LOG_LVL     LOG_LVL_INFO
-#include <ulog.h>
+#define DBG_SECTION_NAME     "drv.infrared"
+#define DBG_LEVEL     DBG_INFO
+#include <rtdbg.h>
 
 #ifdef PKG_USING_INFRARED
 
@@ -71,7 +70,7 @@ rt_err_t infrared_send_init(void)
         return RT_ERROR;
     }
 
-    rt_pwm_set(pwm_dev, PWM_DEV_CHANNEL, 30000, 10000);
+    rt_pwm_set(pwm_dev, PWM_DEV_CHANNEL, 26316, 8770);
     rt_pwm_disable(pwm_dev, PWM_DEV_CHANNEL);
 
     send_time_dev = rt_device_find(SEND_HWTIMER);
