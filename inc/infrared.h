@@ -14,12 +14,12 @@
 #include <rtthread.h>
 #include "decoder.h"
 
-#define CARRIER_WAVE  0xA
-#define IDLE_SIGNAL   0xB
-#define NO_SIGNAL     0x0
+#define CARRIER_WAVE         0xA
+#define IDLE_SIGNAL          0xB
+#define NO_SIGNAL            0x0
 
-#define MAX_SIZE 5
-#define INFRARED_BUFF_SIZE             200
+#define MAX_SIZE             5
+#define INFRARED_BUFF_SIZE   200
 
 struct ir_raw_data
 {
@@ -37,7 +37,7 @@ struct decoder_ops
     rt_err_t (*control)(int cmd, void *arg);
 };
 
-struct decoder_class /* 解码类 */
+struct decoder_class 
 {
     char* name;
     struct decoder_ops* ops;
@@ -53,18 +53,19 @@ struct infrared_class
     rt_size_t (*send)(struct ir_raw_data* data, rt_size_t size);
 };
 
-rt_err_t driver_report_raw_data(rt_uint8_t level, rt_uint32_t us);//底层调用，上报数据。
+rt_err_t driver_report_raw_data(rt_uint8_t level, rt_uint32_t us);
 
 struct infrared_class* infrared_init(void);
-int infrared_deinit(void);//释放资源
+int infrared_deinit(void);
 
-rt_err_t ir_decoder_register(struct decoder_class *decoder);//注册解码函数
+rt_err_t ir_decoder_register(struct decoder_class *decoder);
 
 rt_err_t ir_select_decoder(const char* name);
 
-rt_err_t decoder_read_data(struct ir_raw_data* data);//上层解码器调用,获取原始数据
-rt_err_t decoder_write_data(struct ir_raw_data* data, rt_size_t size);//上层解码器调用,下发数据
+rt_err_t decoder_read_data(struct ir_raw_data* data);
+rt_err_t decoder_write_data(struct ir_raw_data* data, rt_size_t size);
 
 rt_err_t user_read_api(const char* decoder_name,struct infrared_decoder_data* data);
 rt_err_t user_write_api(const char* decoder_name, struct infrared_decoder_data* data);
+
 #endif /* __INFRARED__ */

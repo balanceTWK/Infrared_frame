@@ -2,12 +2,12 @@ from building import *
 
 cwd     = GetCurrentDir()
 src     = []
-path    = [cwd]
+path    = [cwd + '/inc']
 
-src += ['infrared.c']
-src += ['drv_infrared.c']
+src += ['src/infrared.c']
+src += ['src/drv_infrared.c']
 
-src += ['nec_decoder.c']
+src += ['src/nec_decoder.c']
 
 group = DefineGroup('Infrared_frame', src, depend = ['PKG_USING_INFRARED'], CPPPATH = path)
 
